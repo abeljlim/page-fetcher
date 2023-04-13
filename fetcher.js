@@ -41,10 +41,12 @@ request(srcURL, (error, response, body) => {
 
       rl.question(`File at ${destPath} found! Do you want to overwrite it? (type Y if so) `, (answer) => {
         if (answer !== 'Y') {
+          rl.close();
           return;
         }
         // Happy path in this callback waterfall
         writeToFile(destPath, body);
+        rl.close();
       });
       return;
     }
