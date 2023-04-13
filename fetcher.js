@@ -50,7 +50,7 @@ request(srcURL, (error, response, body) => {
       });
       return;
     }
-    // Happy path
+    // Happy path - file does not exist so err.code === 'ENOENT' or something else
     writeToFile(destPath, body);
   });
 });
